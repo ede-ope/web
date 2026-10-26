@@ -2,13 +2,11 @@
 const themeToggle = document.getElementById("theme-toggle");
 const savedTheme = localStorage.getItem("ope-theme");
 
-console.log("saved Theme: " + savedTheme);
-
 const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
 const systemTheme = matchMedia.matches ?
     "dark" :
     "light";
-console.log("system Theme: " + systemTheme);
+
 const theme = savedTheme === "light" || savedTheme === "dark" ?
     savedTheme :
     systemTheme;
@@ -55,14 +53,8 @@ matchMedia.addEventListener("change", (event) => {
 function setTheme(theme) {
     if (theme !== "light" && theme !== "dark") return;
 
-    console.log("before dataset theme!");
-
     document.documentElement.dataset.theme = theme;
-    console.log("before localStorage call");
-
     localStorage.setItem("ope-theme", theme);
-    console.log("local Storage: " + localStorage.getItem("ope-theme"));
-
     setThemeIcon(theme);
 }
 
@@ -97,10 +89,9 @@ navSide.addEventListener("click", () => {
 
 //changes site theme
 themeToggle.addEventListener("click", () => {
-    const storedTheme = localStorage.getItem("ope-theme");
-    if (storedTheme === "light") {
+    if (theme === "light") {
         setTheme("dark");
-    } else if (storedTheme === "dark") {
+    } else if (theme === "dark") {
         setTheme("light");
     }
 });
