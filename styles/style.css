@@ -8,10 +8,80 @@
     --panel-hover: #101e2c;
     --blue: #079af0;
     --blue-deep: #07549a;
+    --button-dg: #168fe0;
+    --light-blue: #0bb8ff;
+    --site-header-bg: rgba(8, 16, 25, .94);
+    --site-header-border: rgba(83, 132, 169, .25);
+    --window-bar-border: rgba(67, 105, 137, .22);
+    --window-bar-bg: rgba(20, 34, 48, .7);
+    --code-win-border: #2b455d;
+    --code-win-bg: rgba(8, 16, 25, .91);
+    --code-win-shadow-col: rgba(0, 0, 0, .18);
+    --code-dot-blue: #0874c9;
+    --code-caption: #718ba5;
+    --code-caption-border: rgba(67, 105, 137, .42);
+    --code-ln-num: #526b84;
+    --syn-keyword: #64d9f6;
+    --syn-fn-ident: #08b9ff;
+    --syn-string: #43d9c0;
+    --syn-type: #B8860B;
+    --hero-radial: rgba(4, 83, 139, .15);
+    --hero-border-bottom: rgba(83, 132, 169, .25);
+    --hero-lin-grad1: #0b1119;
+    --hero-lin-grad2: #0a1420;
+    --hero-mark: rgba(7, 154, 240, .1);
+    --card-lin-grad1: rgba(14, 26, 38, .8);
+    --card-lin-grad2: rgba(11, 20, 30, .55);
+    --card-hover-border: rgba(7, 154, 240, .65);
+    --featr-sec-lin-grad1: #0b1119;
+    --featr-sec-lin-grad2: #0a121b;
     --text: #f5f2ea;
     --muted: #9bb4cd;
     --border: #233b50;
     --code-text: #dbe9f7;
+    --btn-outline-text: #fff;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #f5f8fc;
+    --bg-deep: #eaf1f8;
+    --panel: #ffffff;
+    --panel-hover: #edf5fc;
+    --blue: #087fc4;
+    --blue-deep: #07549a;
+    --button-dg: #0879bd;
+    --light-blue: #007da8;
+    --site-header-bg: rgba(245, 248, 252, .94);
+    --site-header-border: rgba(55, 112, 155, .22);
+    --window-bar-border: rgba(55, 91, 122, .18);
+    --window-bar-bg: rgba(225, 237, 247, .85);
+    --code-win-border: #c7d8e7;
+    --code-win-bg: rgba(255, 255, 255, .96);
+    --code-win-shadow-col: rgba(22, 52, 78, .10);
+    --code-dot-blue: #0874c9;
+    --code-caption: #627b93;
+    --code-caption-border: rgba(55, 91, 122, .25);
+    --code-ln-num: #8295a8;
+    --syn-keyword: #007b9e;
+    --syn-fn-ident: #007fc2;
+    --syn-string: #00866f;
+    --syn-type: #946200;
+    --hero-radial: rgba(4, 120, 190, .10);
+    --hero-border-bottom: rgba(55, 112, 155, .22);
+    --hero-lin-grad1: #f5f8fc;
+    --hero-lin-grad2: #eaf3fb;
+    --hero-mark: rgba(7, 127, 196, .07);
+    --card-lin-grad1: rgba(255, 255, 255, .96);
+    --card-lin-grad2: rgba(239, 246, 252, .92);
+    --card-hover-border: rgba(7, 127, 196, .55);
+    --featr-sec-lin-grad1: #f5f8fc;
+    --featr-sec-lin-grad2: #edf4fa;
+    --text: #172b3e;
+    --muted: #526a80;
+    --border: #d2e0ec;
+    --code-text: #24394d;
+    --btn-outline-text: #172b3e;
 }
 
 * {
@@ -43,8 +113,8 @@ a {
 .site-header {
     position: relative;
     z-index: 2;
-    border-bottom: 1px solid rgba(83, 132, 169, .25);
-    background: rgba(8, 16, 25, .94);
+    border-bottom: 1px solid var(--site-header-border);
+    background: var(--site-header-bg);
 }
 
 .navbar {
@@ -96,6 +166,18 @@ a {
     color: var(--blue);
 }
 
+.nav-links>#theme-toggle .theme-svg:not(.button) {
+    transition: color 160ms ease;
+}
+
+.nav-links>#theme-toggle .theme-svg:not(.button):hover {
+    color: var(--blue);
+}
+
+.nav-links a.active {
+    color: var(--blue);
+}
+
 .button {
     display: inline-flex;
     align-items: center;
@@ -114,7 +196,7 @@ a {
 }
 
 .button:hover {
-    background: #168fe0;
+    background: var(--button-dg);
     box-shadow: 0 7px 24px rgba(7, 154, 240, .24);
     transform: translateY(-1px);
 }
@@ -126,6 +208,7 @@ a {
 }
 
 .button-outline {
+    color: var(--btn-outline-text);
     background: transparent;
     box-shadow: none;
 }
@@ -172,6 +255,25 @@ a {
     color: var(--blue);
 }
 
+#theme-toggle {
+    position: relative;
+    cursor: pointer;
+}
+
+
+/* 
+#theme-toggle svg {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+} */
+
+
+/* #theme-toggle.light #light-icon {
+    opacity: 0;
+    visibility: hidden;
+} */
+
 .menu-toggle {
     opacity: 0;
     visibility: hidden;
@@ -201,8 +303,8 @@ a {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    border-bottom: 1px solid rgba(83, 132, 169, .25);
-    background: radial-gradient(ellipse at 79% 49%, rgba(4, 83, 139, .15), transparent 47%), linear-gradient(110deg, #0b1119 0%, #0a1420 100%);
+    border-bottom: 1px solid var(--hero-border-bottom);
+    background: radial-gradient(ellipse at 79% 49%, var(--hero-radial), transparent 47%), linear-gradient(110deg, var(--hero-lin-grad1) 0%, var(--hero-lin-grad2) 100%);
 }
 
 .hero-grid {
@@ -221,7 +323,7 @@ a {
 
 .eyebrow {
     margin: 0 0 13px;
-    color: #0bb8ff;
+    color: var(--light-blue);
     font-size: 12px;
     font-weight: 750;
     letter-spacing: 2.3px;
@@ -264,7 +366,7 @@ h1 span {
     opacity: .3;
     /* transform: rotate(45deg); border: 70px solid transparent;
   	border-right-color: var(--blue-deep); border-bottom-color: #086db8;*/
-    filter: drop-shadow(0 0 35px rgba(7, 154, 240, .1));
+    filter: drop-shadow(0 0 35px var(--hero-mark));
 }
 
 
@@ -279,12 +381,14 @@ h1 span {
 .code-window {
     position: relative;
     z-index: 1;
+    /* top: 20px; */
+    /* bottom: -px; */
     overflow: hidden;
     width: 100%;
-    border: 1px solid #2b455d;
+    border: 1px solid var(--code-win-border);
     border-radius: 16px;
-    background: rgba(8, 16, 25, .91);
-    box-shadow: 0 18px 55px rgba(0, 0, 0, .18);
+    background: var(--code-win-bg);
+    box-shadow: 0 18px 55px var(--code-win-shadow-col);
 }
 
 .window-bar {
@@ -293,8 +397,8 @@ h1 span {
     align-items: center;
     justify-content: space-between;
     padding: 0 22px;
-    border-bottom: 1px solid rgba(67, 105, 137, .22);
-    background: rgba(20, 34, 48, .7);
+    border-bottom: 1px solid var(--window-bar-border);
+    background: var(--window-bar-bg);
 }
 
 .window-dots {
@@ -311,12 +415,12 @@ h1 span {
 }
 
 .window-dots i:first-child {
-    background: #0874c9;
+    background: var(--code-dot-blue);
 }
 
 .filename,
 .code-caption {
-    color: #718ba5;
+    color: var(--code-caption);
     font-size: 13px;
 }
 
@@ -335,7 +439,7 @@ h1 span {
 }
 
 .line-number {
-    color: #526b84;
+    color: var(--code-ln-num);
     text-align: center;
     user-select: none;
 }
@@ -345,19 +449,19 @@ h1 span {
 }
 
 .syntax-keyword {
-    color: #64d9f6;
+    color: var(--syn-keyword);
 }
 
 .syntax-function {
-    color: #08b9ff;
+    color: var(--syn-fn-ident);
 }
 
 .syntax-string {
-    color: #43d9c0;
+    color: var(--syn-string);
 }
 
 .syntax-type {
-    color: #B8860B;
+    color: var(--syn-type);
 }
 
 .syntax-ident {
@@ -367,12 +471,12 @@ h1 span {
 .code-caption {
     margin: 12px 22px 0;
     padding: 17px 0 14px;
-    border-top: 1px solid rgba(67, 105, 137, .42);
+    border-top: 1px solid var(--code-caption-border);
 }
 
 .features-section {
     padding: 50px 0 27px;
-    background: linear-gradient(180deg, #0b1119, #0a121b);
+    background: linear-gradient(180deg, var(--featr-sec-lin-grad1), var(--featr-sec-lin-grad2));
 }
 
 .section-heading {
@@ -417,13 +521,13 @@ h1 span {
     cursor: default;
     border: 1px solid var(--border);
     border-radius: 14px;
-    background: linear-gradient(120deg, rgba(14, 26, 38, .8), rgba(11, 20, 30, .55));
+    background: linear-gradient(120deg, var(--card-lin-grad1), var(--card-lin-grad2));
     transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
 }
 
 .feature-card:hover {
     transform: translateY(-2px);
-    border-color: rgba(7, 154, 240, .65);
+    border-color: var(--card-hover-border);
     background: var(--panel-hover);
 }
 
@@ -515,10 +619,19 @@ h1 span {
         visibility: hidden;
         background-color: transparent;
         position: fixed;
+        display: flex;
+        flex-direction: row;
         top: 0px;
         left: 0px;
         right: 0px;
         bottom: 0px;
+    }
+    .nav-links-back {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin-right: 50%;
+        background-color: transparent;
     }
     .nav-links {
         /* opacity: 0;
@@ -570,6 +683,9 @@ h1 span {
     .brand-logo {
         width: 38px;
         height: 38px;
+    }
+    .nav-links-back {
+        margin-right: 70%;
     }
     .nav-links {
         font-size: 13px;
