@@ -88,6 +88,7 @@ navSide.addEventListener("click", () => {
     navigation.classList.toggle("active", isOpen);
 });
 
+//changes site theme
 themeToggle.addEventListener("click", () => {
     const storedTheme = localStorage.getItem("ope-theme");
     if (storedTheme === "light") {
