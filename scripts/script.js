@@ -92,6 +92,7 @@ navSide.addEventListener("click", () => {
 themeToggle.addEventListener("click", () => {
     console.log("Theme button clicked!");
     const storedTheme = localStorage.getItem("ope-theme");
+    console.log("saved Theme: " + storedTheme);
     if (storedTheme === "light") {
         setTheme("dark");
     } else if (storedTheme === "dark") {
