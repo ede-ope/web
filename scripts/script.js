@@ -55,7 +55,11 @@ matchMedia.addEventListener("change", (event) => {
 function setTheme(theme) {
     if (theme !== "light" && theme !== "dark") return;
 
+    console.log("before dataset theme!");
+
     document.documentElement.dataset.theme = theme;
+    console.log("before localStorage call");
+
     localStorage.setItem("ope-theme", theme);
     console.log("local Storage: " + localStorage.getItem("ope-theme"));
 
