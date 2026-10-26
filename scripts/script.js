@@ -89,9 +89,22 @@ navSide.addEventListener("click", () => {
 
 //changes site theme
 themeToggle.addEventListener("click", () => {
-    if (theme === "light") {
+    const storedTheme = localStorage.getItem("ope-theme");
+    if (storedTheme === "light") {
         setTheme("dark");
-    } else if (theme === "dark") {
+    } else if (storedTheme === "dark") {
         setTheme("light");
+    } else {
+        // if its the first click
+        const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+        const systemTheme = matchMedia.matches ?
+            "dark" :
+            "light";
+
+        if (systemTheme === "light") {
+            setTheme("dark");
+        } else if (systemTheme === "dark") {
+            setTheme("light");
+        }
     }
 });
