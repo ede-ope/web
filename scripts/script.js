@@ -2,11 +2,13 @@
 const themeToggle = document.getElementById("theme-toggle");
 const savedTheme = localStorage.getItem("ope-theme");
 
+console.log("saved Theme: " + savedTheme);
+
 const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
 const systemTheme = matchMedia.matches ?
     "dark" :
     "light";
-
+console.log("system Theme: " + systemTheme);
 const theme = savedTheme === "light" || savedTheme === "dark" ?
     savedTheme :
     systemTheme;
@@ -90,9 +92,7 @@ navSide.addEventListener("click", () => {
 
 //changes site theme
 themeToggle.addEventListener("click", () => {
-    console.log("Theme button clicked!");
     const storedTheme = localStorage.getItem("ope-theme");
-    console.log("saved Theme: " + storedTheme);
     if (storedTheme === "light") {
         setTheme("dark");
     } else if (storedTheme === "dark") {
