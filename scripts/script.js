@@ -55,7 +55,7 @@ function setTheme(theme) {
 
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("ope-theme", theme);
-
+    const savedTheme = theme;
     setThemeIcon(theme);
 }
 
@@ -89,9 +89,10 @@ navSide.addEventListener("click", () => {
 });
 
 themeToggle.addEventListener("click", () => {
-    if (theme === "light") {
+    const storedTheme = localStorage.getItem("ope-theme");
+    if (storedTheme === "light") {
         setTheme("dark");
-    } else if (theme === "dark") {
+    } else if (storedTheme === "dark") {
         setTheme("light");
     }
 });
