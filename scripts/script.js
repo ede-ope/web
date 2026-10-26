@@ -57,7 +57,8 @@ function setTheme(theme) {
 
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("ope-theme", theme);
-    const savedTheme = theme;
+    console.log("local Storage: " + localStorage.getItem("ope-theme"));
+
     setThemeIcon(theme);
 }
 
